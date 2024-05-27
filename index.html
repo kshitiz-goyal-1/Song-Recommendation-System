@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Recommendation System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1DB954;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 80%;
+            text-align: center;
+            color: #fff;
+        }
+
+        #searchInput {
+            width: 60%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            background-color: #212121;
+            color: #fff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            width: 70%;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #1DB954;
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+        }
+
+        #searchResults {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .searched-song, .recommendation {
+            background-color: #282828;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .searched-song:hover, .recommendation:hover {
+            transform: translateY(-5px);
+        }
+
+        .searched-song p, .recommendation p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .searched-song a, .recommendation a {
+            display: block;
+            text-decoration: none;
+            color: #1DB954;
+            margin-top: 10px;
+        }
+
+        .searched-song a:hover, .recommendation a:hover {
+            text-decoration: underline;
+        }
+
+        .buffer {
+            font-size: 1.2rem;
+            color: #1DB954;
+            margin-top: 20px;
+        }
+        .recommended-song {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative; /* Required for absolute positioning of pseudo-element */
+    transition: background-color 0.3s ease; /* Transition for background color change */
+}
+
+.recommended-song::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Initial background color (transparent) */
+    transition: background-color 0.3s ease; /* Transition for background color change */
+}
+
+.recommended-song:hover::before {
+    background-color: rgba(0, 0, 0, 0.5); /* Hover background color */
+}
+.loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px; /* Half of width */
+  margin-left: -25px; /* Half of height */
+  z-index: 9999; /* Make sure it's on top of other elements */
+  display: none; /* Initially hidden */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Song Recommendation System</h1>
+    <p>Welcome to our Song Recommendation System. Our project is unique because it recommends songs based on the music of the songs themselves. Simply enter a song name, and we'll find similar songs for you!</p>
+    <input type="text" id="searchInput" placeholder="Enter your query">
+    <button onclick="search()">Search</button>
+    <div id="searchResults"></div>
+    <div id="loading" class="loader"></div>
+
+    <div id="buffer" class="buffer" style="display: none;">Please wait while we search for recommendations...</div>
+    <script src="frontend.js"></script>
+</body>
+</html>

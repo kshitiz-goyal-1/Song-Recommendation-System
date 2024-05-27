@@ -1,0 +1,15 @@
+/* Add this CSS to a separate file or in a <style> tag in your HTML */
+
+.recommendation {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.recommendation p {
+    margin: 0;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
