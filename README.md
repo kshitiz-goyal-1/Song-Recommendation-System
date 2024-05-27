@@ -4,7 +4,7 @@
  But before doing so you may have to do some more work .
  First get api keys from spotify for developers and create a folder dat and in that apikeys then add these secret keys and client key in json format.
  Further you need to get the feather files to train your model for that you have to run the jupyter notebooks one by one.
- If got stuck you may forward the issue to sahilsaklani74177@gmail.com. 
+ If got stuck you may forward the issue to kkshitizgoyal@gmail.com. 
  After all training and getting the model up to date then run the backend.py and open the index.html to search that particular song you will get recommendations.
  Note: The accuracy of the projects depends upon the pool of songs you have used in traing encoder and decoder model. If your latent space pool have less no. of songs then you may not get good recommendations.
  Project pipeline: 
